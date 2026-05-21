@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+.dark {
+  color-scheme: dark;
+  --terminal-bg: 10 14 20;
+  --terminal-surface: 15 20 25;
+  --terminal-border: 31 41 55;
+  --terminal-green: 127 223 100;
+  --terminal-cyan: 57 186 230;
+  --terminal-yellow: 255 180 84;
+  --terminal-purple: 163 122 204;
+  --terminal-red: 240 113 120;
+  --terminal-blue: 89 194 255;
+  --terminal-text: 191 189 182;
+  --terminal-heading: 255 255 255;
+  --terminal-dim: 92 103 115;
+  --terminal-comment: 92 103 115;
+  --grid-line: 57 186 230;
+  --grid-line-alpha: 0.03;
+  --selection-fg: 10 14 20;
+}
+
+.light {
+  color-scheme: light;
+  --terminal-bg: 247 248 250;
+  --terminal-surface: 255 255 255;
+  --terminal-border: 209 213 219;
+  --terminal-green: 22 163 74;
+  --terminal-cyan: 8 145 178;
+  --terminal-yellow: 202 138 4;
+  --terminal-purple: 124 58 237;
+  --terminal-red: 220 38 38;
+  --terminal-blue: 37 99 235;
+  --terminal-text: 31 41 55;
+  --terminal-heading: 17 24 39;
+  --terminal-dim: 100 116 139;
+  --terminal-comment: 107 114 128;
+  --grid-line: 8 145 178;
+  --grid-line-alpha: 0.05;
+  --selection-fg: 255 255 255;
+}
+
+html,
+body {
+  background-color: rgb(var(--terminal-bg));
+  color: rgb(var(--terminal-text));
+  font-family: "JetBrains Mono", "Fira Code", Menlo, monospace;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: rgb(var(--terminal-cyan));
+  color: rgb(var(--selection-fg));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--terminal-bg));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--terminal-border));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--terminal-cyan));
+}
+
+/* Grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgb(var(--grid-line) / var(--grid-line-alpha)) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--grid-line) / var(--grid-line-alpha)) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glow effects */
+.glow-cyan {
+  text-shadow: 0 0 12px rgb(var(--terminal-cyan) / 0.4);
+}
+.glow-green {
+  text-shadow: 0 0 12px rgb(var(--terminal-green) / 0.4);
+}
+
+.card-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgb(var(--terminal-cyan) / 0.4), rgb(var(--terminal-green) / 0.2));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card-glow:hover::before {
+  opacity: 1;
+}
+.card-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgb(var(--terminal-cyan) / 0.15);
+}
+
+/* Print styles for CV */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

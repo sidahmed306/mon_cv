@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1419"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+    <linearGradient id="text" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#39bae6"/>
+      <stop offset="100%" stop-color="#7fdf64"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bg)"/>
+  <text x="100" y="118" font-family="JetBrains Mono, Menlo, monospace" font-size="68" font-weight="700" text-anchor="middle" fill="url(#text)">SB</text>
+  <text x="100" y="162" font-family="JetBrains Mono, Menlo, monospace" font-size="11" text-anchor="middle" fill="#5c6773">// add photo</text>
+</svg>
